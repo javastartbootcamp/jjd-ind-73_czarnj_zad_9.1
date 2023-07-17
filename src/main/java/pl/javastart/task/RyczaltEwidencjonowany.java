@@ -1,7 +1,8 @@
 package pl.javastart.task;
 
 public class RyczaltEwidencjonowany extends FormaOpodatkowania {
-    private final static String NAZWA = "Ryczałt ewidencjonowany";
+    private static final String NAZWA = "Ryczałt ewidencjonowany";
+
     @Override
     public double wyliczPodatek(double przychody) {
         return przychody * 0.15;

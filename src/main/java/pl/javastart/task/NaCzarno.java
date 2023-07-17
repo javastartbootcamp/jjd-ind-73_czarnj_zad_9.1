@@ -1,7 +1,7 @@
 package pl.javastart.task;
 
 public class NaCzarno extends FormaOpodatkowania {
-    private final static String NAZWA = "Na czarno";
+    private static final String NAZWA = "Na czarno";
 
     @Override
     public double wyliczPodatek(double przychody) {

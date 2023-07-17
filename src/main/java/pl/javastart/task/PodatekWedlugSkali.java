@@ -1,11 +1,11 @@
 package pl.javastart.task;
 
 public class PodatekWedlugSkali extends FormaOpodatkowania {
-    private final static double SKALA_PODATKU_DO_100000 = 0.18;
-    private final static double SKALA_PODATKU_PONAD_100000 = 0.32;
-    private final static double MAX_PRZYCHOD_WOLNY_OD_PODATKU = 10_000;
-    private final static double MAX_PRZYCHOD_PODATEK_18_PROCENT = 100_000;
-    private final static String NAME = "Podatek według skali podatkowej";
+    private static final double SKALA_PODATKU_DO_100000 = 0.18;
+    private static final double SKALA_PODATKU_PONAD_100000 = 0.32;
+    private static final double MAX_PRZYCHOD_WOLNY_OD_PODATKU = 10_000;
+    private static final double MAX_PRZYCHOD_PODATEK_18_PROCENT = 100_000;
+    private static final String NAME = "Podatek według skali podatkowej";
 
     @Override
     public double wyliczPodatek(double przychody) {

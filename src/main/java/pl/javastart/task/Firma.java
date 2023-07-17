@@ -1,8 +1,8 @@
 package pl.javastart.task;
 
 public class Firma {
-    private final static int MAX_LICZBA_PRZYCHODOW = 1000;
-    private final static int MAX_LICZBA_WYDATKOW = 1000;
+    private static final int MAX_LICZBA_PRZYCHODOW = 1000;
+    private static final int MAX_LICZBA_WYDATKOW = 1000;
     private String nazwa;
     private FormaOpodatkowania formaOpodatkowania;
     private Przychod[] przychody = new Przychod[MAX_LICZBA_PRZYCHODOW];
