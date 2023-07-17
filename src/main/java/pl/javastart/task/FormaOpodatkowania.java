@@ -6,4 +6,8 @@ public class FormaOpodatkowania {
         System.out.println("Metoda z wyliczaniem podatku nie została nadpisana");
         return -1;
     }
+
+    public String getName() {
+        return "";
+    }
 }

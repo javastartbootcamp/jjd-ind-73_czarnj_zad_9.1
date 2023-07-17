@@ -1,9 +1,14 @@
 package pl.javastart.task;
 
 public class Firma {
-
+    private final static int MAX_LICZBA_PRZYCHODOW = 1000;
+    private final static int MAX_LICZBA_WYDATKOW = 1000;
     private String nazwa;
     private FormaOpodatkowania formaOpodatkowania;
+    private Przychod[] przychody = new Przychod[MAX_LICZBA_PRZYCHODOW];
+    private Wydatek[] wydatki = new Wydatek[MAX_LICZBA_WYDATKOW];
+    private int obecnaLiczbaPrzychodow = 0;
+    private int obecnaLiczbaWydatkow = 0;
 
     public Firma(String nazwa, FormaOpodatkowania formaOpodatkowania) {
         this.nazwa = nazwa;
@@ -12,28 +17,40 @@ public class Firma {
 
     public void wyswietlPodsumowanie() {
         double sumaPrzychodow = zsumujPrzychody();
+        double sumaWydatkow = zsumujWydatki();
+        double dochod = sumaPrzychodow - sumaWydatkow;
 
         System.out.printf("======= Firma: %s ===========\n", nazwa);
-        System.out.printf("Forma opodatkowania: %s\n", "TODO");
+        System.out.printf("Forma opodatkowania: %s\n", formaOpodatkowania.getName());
         System.out.printf("Suma przychodów: %.2f zł\n", sumaPrzychodow);
-        System.out.printf("Suma wydatków: %.2f zł\n", zsumujWydatki());
-        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(sumaPrzychodow));
+        System.out.printf("Suma wydatków: %.2f zł\n", sumaWydatkow);
+        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(dochod));
         System.out.print("\n\n");
     }
 
     private double zsumujWydatki() {
-        return 0;
+        double suma = 0;
+        for (int i = 0; i < obecnaLiczbaWydatkow; i++) {
+            suma += wydatki[i].getWartosc();
+        }
+        return suma;
     }
 
     private double zsumujPrzychody() {
-        return 0;
+        double suma = 0;
+        for (int i = 0; i < obecnaLiczbaPrzychodow; i++) {
+            suma += przychody[i].getWartosc();
+        }
+        return suma;
     }
 
     public void dodajPrzychod(String nazwa, double wartosc) {
-        // TODO
+        Przychod przychod = new Przychod(nazwa, wartosc);
+        przychody[obecnaLiczbaPrzychodow++] = przychod;
     }
 
     public void dodajWydatek(String nazwa, double wartosc) {
-        // TODO
+        Wydatek wydatek = new Wydatek(nazwa, wartosc);
+        wydatki[obecnaLiczbaWydatkow++] = wydatek;
     }
 }
