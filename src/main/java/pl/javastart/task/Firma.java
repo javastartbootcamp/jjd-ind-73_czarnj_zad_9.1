@@ -18,14 +18,21 @@ public class Firma {
     public void wyswietlPodsumowanie() {
         double sumaPrzychodow = zsumujPrzychody();
         double sumaWydatkow = zsumujWydatki();
-        double dochod = sumaPrzychodow - sumaWydatkow;
+        double podatekDoZaplacenia = getPodatekDoZaplacenia(sumaPrzychodow, sumaWydatkow);
 
         System.out.printf("======= Firma: %s ===========\n", nazwa);
-        System.out.printf("Forma opodatkowania: %s\n", formaOpodatkowania.getName());
+        System.out.printf("Forma opodatkowania: %s\n", formaOpodatkowania.getNazwa());
         System.out.printf("Suma przychodów: %.2f zł\n", sumaPrzychodow);
         System.out.printf("Suma wydatków: %.2f zł\n", sumaWydatkow);
-        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(dochod));
+        System.out.printf("Podatek do zapłacenia: %.2f zł", podatekDoZaplacenia);
         System.out.print("\n\n");
+    }
+
+    private double getPodatekDoZaplacenia(double sumaPrzychodow, double sumaWydatkow) {
+        if (formaOpodatkowania.getNazwa().equals(RyczaltEwidencjonowany.NAZWA)) {
+            return formaOpodatkowania.wyliczPodatek(sumaPrzychodow, 0);
+        }
+        return formaOpodatkowania.wyliczPodatek(sumaPrzychodow, sumaWydatkow);
     }
 
     private double zsumujWydatki() {
